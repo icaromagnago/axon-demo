@@ -19,75 +19,75 @@ import br.com.alphacoders.axon.axondemo.coreapi.queries.FindAllOrders;
 @Component
 public class OrderSummaryProjection {
   
-//  private OrderSummaryRepository orderSummaryRepository;
-//
-//  public OrderSummaryProjection(OrderSummaryRepository orderSummaryRepository) {
-//    this.orderSummaryRepository = orderSummaryRepository;
-//  }
+  private OrderSummaryRepository orderSummaryRepository;
 
-//  @EventHandler
-//  public void on(OrderCreatedEvent event) {
-//    orderSummaryRepository.save(new OrderSummary(event.getOrderId()));
-//  }
-//
-//  @EventHandler
-//  public void on(OrderConfirmedEvent event) throws OrderNotFoundException {
-//    OrderSummary orderSummary = orderSummaryRepository
-//      .findById(event.getOrderId())
-//      .orElseThrow(() -> new OrderNotFoundException());
-//
-//    orderSummary.setOrderConfirmed();
-//  }
-//
-//  @EventHandler
-//  public void on(OrderShippedEvent event) throws OrderNotFoundException {
-//    OrderSummary orderSummary = orderSummaryRepository
-//      .findById(event.getOrderId())
-//      .orElseThrow(() -> new OrderNotFoundException());
-//
-//      orderSummary.setOrderShipped();
-//  }
-//
-//  @EventHandler
-//  public void on(ProductAddedEvent event) throws OrderNotFoundException {
-//    OrderSummary orderSummary = orderSummaryRepository
-//      .findById(event.getOrderId())
-//      .orElseThrow(() -> new OrderNotFoundException());
-//
-//      orderSummary.addProduct(event.getProductId());
-//  }
-//
-//  @EventHandler
-//  public void on(ProductCountIncrementedEvent event) throws OrderNotFoundException {
-//    OrderSummary orderSummary = orderSummaryRepository
-//      .findById(event.getOrderId())
-//      .orElseThrow(() -> new OrderNotFoundException());
-//
-//      orderSummary.incrementProduct(event.getProductId());
-//  }
-//
-//  
-//  @EventHandler
-//  public void on(ProductCountDecrementedEvent event) throws OrderNotFoundException {
-//    OrderSummary orderSummary = orderSummaryRepository
-//      .findById(event.getOrderId())
-//      .orElseThrow(() -> new OrderNotFoundException());
-//
-//      orderSummary.decrementProduct(event.getProductId());
-//  }
-//
-//  
-//  @EventHandler
-//  public void on(ProductRemovedEvent event) throws OrderNotFoundException {
-//    OrderSummary orderSummary = orderSummaryRepository
-//      .findById(event.getOrderId())
-//      .orElseThrow(() -> new OrderNotFoundException());
-//
-//      orderSummary.removeProduct(event.getProductId());
-//  }
-//
-//  @QueryHandler
-//  public List<OrderSummary> handle(FindAllOrders findAllOrders) {
-//    return orderSummaryRepository.findAll();
-//  }
+  public OrderSummaryProjection(OrderSummaryRepository orderSummaryRepository) {
+    this.orderSummaryRepository = orderSummaryRepository;
+  }
+
+  @EventHandler
+  public void on(OrderCreatedEvent event) {
+    orderSummaryRepository.save(new OrderSummary(event.getOrderId()));
+  }
+
+  @EventHandler
+  public void on(OrderConfirmedEvent event) throws OrderNotFoundException {
+    OrderSummary orderSummary = orderSummaryRepository
+      .findById(event.getOrderId())
+      .orElseThrow(() -> new OrderNotFoundException());
+
+    orderSummary.setOrderConfirmed();
+  }
+
+  @EventHandler
+  public void on(OrderShippedEvent event) throws OrderNotFoundException {
+    OrderSummary orderSummary = orderSummaryRepository
+      .findById(event.getOrderId())
+      .orElseThrow(() -> new OrderNotFoundException());
+
+      orderSummary.setOrderShipped();
+  }
+
+  @EventHandler
+  public void on(ProductAddedEvent event) throws OrderNotFoundException {
+    OrderSummary orderSummary = orderSummaryRepository
+      .findById(event.getOrderId())
+      .orElseThrow(() -> new OrderNotFoundException());
+
+      orderSummary.addProduct(event.getProductId());
+  }
+
+  @EventHandler
+  public void on(ProductCountIncrementedEvent event) throws OrderNotFoundException {
+    OrderSummary orderSummary = orderSummaryRepository
+      .findById(event.getOrderId())
+      .orElseThrow(() -> new OrderNotFoundException());
+
+      orderSummary.incrementProduct(event.getProductId());
+  }
+
+  
+  @EventHandler
+  public void on(ProductCountDecrementedEvent event) throws OrderNotFoundException {
+    OrderSummary orderSummary = orderSummaryRepository
+      .findById(event.getOrderId())
+      .orElseThrow(() -> new OrderNotFoundException());
+
+      orderSummary.decrementProduct(event.getProductId());
+  }
+
+  
+  @EventHandler
+  public void on(ProductRemovedEvent event) throws OrderNotFoundException {
+    OrderSummary orderSummary = orderSummaryRepository
+      .findById(event.getOrderId())
+      .orElseThrow(() -> new OrderNotFoundException());
+
+      orderSummary.removeProduct(event.getProductId());
+  }
+
+  @QueryHandler
+  public List<OrderSummary> handle(FindAllOrders findAllOrders) {
+    return orderSummaryRepository.findAll();
+  }
 }

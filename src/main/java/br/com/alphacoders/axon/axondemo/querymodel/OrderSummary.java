@@ -3,27 +3,36 @@ package br.com.alphacoders.axon.axondemo.querymodel;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.MapKeyColumn;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-//@Entity
+@Entity
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
 @Getter
 public class OrderSummary {
   
-  //@Id
+  @Id
   private String id;
 
- // @Enumerated(EnumType.STRING)
+  @Enumerated(EnumType.STRING)
   private OrderStatus orderStatus;
 
-  //@ElementCollection(fetch = FetchType.EAGER)
-  //@MapKeyColumn(name="product_id")
-  //@Column(name="count")
+  @ElementCollection(fetch = FetchType.EAGER)
+  @MapKeyColumn(name="product_id")
+  @Column(name="count")
   private Map<String, Integer> products;
 
   public OrderSummary(String orderId) {
